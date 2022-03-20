@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_inherit_added_fields_form" model="ir.ui.view">
+            <field name="name">view.inherit.added.fields.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='ref']" position="after">
+                    <field name="journey_num" dir="rtl" attrs="{'invisible':[('type', 'not in', ('out_invoice', 'out_refund'))]}"/>
+                    <field name="ship_name" attrs="{'invisible':[('type', 'not in', ('out_invoice', 'out_refund'))]}"/>
+                    <field name="to_port" attrs="{'invisible':[('type', 'not in', ('out_invoice', 'out_refund'))]}"/>
+                    <field name="from_port" attrs="{'invisible':[('type', 'not in', ('out_invoice', 'out_refund'))]}"/>
+                    <field name="msg_text" attrs="{'invisible':[('type', 'not in', ('out_invoice', 'out_refund'))]}"/>
+                    <field name="bill_of_lading" attrs="{'invisible':[('type', 'not in', ('out_invoice', 'out_refund'))]}"/>
+                    <field name="size_in_meter" attrs="{'invisible':[('type', 'not in', ('out_invoice', 'out_refund'))]}"/>
+                    <field name="weight_in_ton" attrs="{'invisible':[('type', 'not in', ('out_invoice', 'out_refund'))]}"/>
+                    <field name="parcel_count" attrs="{'invisible':[('type', 'not in', ('out_invoice', 'out_refund'))]}"/>
+                    <!--                    <field name="num_inv"/>-->
+
+                </xpath>
+                <xpath expr="//button[@name='button_draft']" position="after">
+
+                    <button string="Print" type="object" name="print_report_invoice" class="oe_highlight"
+                            attrs="{'invisible':[('type', 'not in', ('out_invoice', 'out_refund'))]}"
+                    />
+                </xpath>
+                <xpath expr="//field[@name='currency_id']" position="after">
+                    <field name="is_journal_state_rel" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_inherit_bool_fields_form" model="ir.ui.view">
+            <field name="name">view.inherit.bool.fields.form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="journal_state" widget="radio"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_inherit_company_fields_form" model="ir.ui.view">
+            <field name="name">view.inherit.company.fields.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="after">
+                    <field name="address_st"/>
+                    <field name="fax"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

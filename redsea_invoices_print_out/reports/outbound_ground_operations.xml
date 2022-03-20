@@ -1,0 +1,290 @@
+<odoo>
+    <data>
+
+        <record id="outbound_ground_operations_paper" model="report.paperformat">
+            <field name="name">Outbound Ground Operations Report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">35</field>
+            <field name="margin_bottom">40</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+                id="outbound_ground_operations_report"
+                menu="False"
+                model="account.move"
+                report_type="qweb-pdf"
+                string="Print Outbound Ground Operations"
+                name="redsea_invoices_print_out.outbound_ground_operations_report"
+                file="redsea_invoices_print_out.outbound_ground_operations_report"
+                paperformat="outbound_ground_operations_paper"
+
+        />
+
+        <template id="outbound_ground_operations_header_footer">
+                <div class="header" style="text-align:right;font-style:italic;color:#000080">
+                <div class="float-right"
+                     style="display:inline;text-align:right;margin-left:50px;margin-bottom:10px;font-weight: bold;color:black;font-family: 'Amiri';font-size:20px;width:300px">
+                    شركة البحر الاحمر للملاحة
+                </div>
+
+                <table style="text-align:right; width:100%;font-family: Verdana, Arial, Tahoma, Serif;  " dir="rtl">
+                    <tbody style="">
+                        <tr style="margin-top:20px;">
+                            <th style="font-size: 13px; display:inline;text-align:right"
+                                dir="rtl">ش.م.م بنظام المناطق الحرة الخاصة
+                            </th>
+                            <th class="float-left"
+                                style="margin-right:155px;font-size: 13px; ;display:inline;text-align:right"
+                                dir="rtl">فرع القاهرة 25 ش ابراهيم نوار متفرع من أحمد فخرى - م.نصر
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="font-size: 13px;  ;display:inline;text-align:right"
+                                dir="rtl">سجل تجارى 29710
+                            </th>
+                            <th class="float-left"
+                                style="margin-left:265px;font-size: 13px; ;display:inline;text-align:right"
+                                dir="rtl">فاكس 23520151(02)
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="font-size: 13px;  ;display:inline;text-align:right"
+                                dir="rtl">المقر الرئيسى : 10 شارع جوهر القائد - بورتوفيق - السويس
+                            </th>
+                            <th class="float-left"
+                                style="margin-left:212px;font-size: 13px; ;display:inline;text-align:right"
+                                dir="rtl">ت : 23520150 - 23520148(02)
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="font-size: 13px;  ;display:inline;text-align:right"
+                                dir="rtl">ص.ب 136 بورتوفيق
+                            </th>
+                            <th class="float-left"
+                                style="margin-left:50px;font-size: 13px; ;display:inline;text-align:right"
+                                dir="rtl">فرع بورسعيد : 7 ش السلام و الجمهورية - برج سرحان
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="font-size: 13px;  ;display:inline;text-align:right"
+                                dir="rtl">تليفون 3196971,2,3,4,5(062)
+                            </th>
+                            <th class="float-left"
+                                style="margin-left:120px;font-size: 13px; ;display:inline;text-align:right"
+                                dir="rtl">ص.ب : 1233 بورسعيد - فاكس 325984(066)
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="font-size: 13px;  ;display:inline;text-align:right"
+                                dir="rtl">فاكس : 3196915(062)
+                            </th>
+                            <th class="float-left"
+                                style="margin-left:212px;font-size: 13px; ;display:inline;text-align:right"
+                                dir="rtl">ت : 3201034 - 3201024(066)
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="font-size: 12px;  ;display:inline;text-align:right"
+                                dir="rtl">ب.ض :389-931-204 / م.ض : 999-338-05
+                            </th>
+                            <th class="float-left"
+                                style="margin-left:212px;font-size: 13px; ;display:inline;text-align:right"
+                                dir="rtl"></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <div class="footer o_standard_footer" style="font-style:italic;color:#3D56B2">
+                <div style="border-top:1px; background-color: black; margin-top: 20px;height: 1px;"/>
+                <br/>
+                <div class="float-right" style="color:#3D56B2">
+                    ملحوظة : لا تعتبر الفاتورة مسددة الا بموجب ايصال رسمى يفيد السداد
+                </div>
+            </div>
+        </template>
+
+
+        <template id="outbound_ground_operations_page">
+            <t t-call="web.basic_layout">
+               <br/>
+                <br/>
+                <div class="page" style="font-style:italic">
+                    <div style="border-top:1px; background-color: black; margin-top: 20px;height: 1px;font-family: arial"/>
+                    <br></br>
+                    <div class="text-center">
+                        <t  t-if="o.name != '/'">
+                        <h4 style="display:inline;font-style:normal" dir="rtl">فاتورة عمليات أرضية صادر رقم
+                            :
+                        </h4>
+                        <h4 style="display:inline;margin-right:10px;font-style:normal"
+                            t-esc="o.name.split('/')[2]" dir="rtl"></h4>
+                        </t>
+                    </div>
+                    <br></br>
+                    <div style="margin-top:10px;;margin-left:370px">
+                        <span style="float:right;font-size: 15px;" dir="rtl">
+                            ميناء السويس فى:
+                        </span>
+                        <span style="float:right;margin-right:5px;font-size: 15px;" dir="rtl" t-esc=" o.invoice_date"/>
+                        <br/>
+                    </div>
+                    <div style="margin-top:10px;margin-left:350px;">
+                        <span style="float:right;font-size: 15px;margin-bottom:10px ;" dir="rtl">
+                            الســـــــــــادة :
+                        </span>
+                        <span style="float:right;margin-right:5px;font-size: 15px;" dir="rtl"
+                              t-esc=" o.partner_id.name"/>
+                    </div>
+
+                    <div class="row">
+                        <div style="margin-bottom:10px" class="col-4">
+                            <span style="float:right;font-size: 15px;" dir="rtl">
+                                رحلة رقــم:
+                            </span>
+                            <span style="float:right;margin-right:5px;font-size: 15px;" dir="rtl"
+                                  t-esc="o.journey_num"/>
+                        </div>
+                        <div class="col-8" style="width:100%">
+                            <span style="float:right;font-size: 15px;" dir="rtl">
+                                اسم البــــاخرة:
+                            </span>
+                            <span style="float:right;margin-right:5px;font-size: 15px;" dir="rtl" t-esc="o.ship_name"/>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:10px;">
+                        <div style="width:100%" class="col-4">
+                            <span style="float:right;font-size: 15px;" dir="rtl">
+                                الى مينــاء:
+                            </span>
+                            <span style="float:right;margin-right:5px;font-size: 15px;" dir="rtl" t-esc="o.to_port"/>
+                        </div>
+                        <div style="width:100%" class="col-8">
+                            <span style="float:right;font-size: 15px;" dir="rtl">
+                                من مينــــــــــاء:
+                            </span>
+                            <span style="float:right;margin-right:5px;font-size: 15px;" dir="rtl" t-esc="o.from_port"/>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:10px">
+                        <div class="col-4">
+                            <span style="float:right;font-size: 15px;" dir="rtl">
+                                بيان الرسالـة:
+                            </span>
+                            <span style="float:right;margin-right:5px;font-size: 15px;" dir="rtl" t-esc="o.msg_text"/>
+                        </div>
+                        <div class="col-8" style="width:100%">
+                            <span style="float:right;font-size: 15px;" dir="rtl">
+                                بوليصة رقــــــم:
+                            </span>
+                            <span style="float:right;margin-right:5px;font-size: 15px;" dir="rtl"
+                                  t-esc="o.bill_of_lading"/>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:10px;">
+                        <div style="font-size: 15px;" class="col-4">
+                            <span style="float:right;font-size: 15px;" dir="rtl">
+                                الحجم بالمتر المكعب:
+                            </span>
+                            <span style="float:right;margin-right:5px;font-size: 15px;" dir="rtl"
+                                  t-esc="o.size_in_meter"/>
+                        </div>
+                        <div style="font-size: 15px;" class="col-3">
+                            <span style="float:right;font-size: 15px;" dir="rtl">
+                                الوزن بالطن:
+                            </span>
+                            <span style="float:right;margin-right:5px;font-size: 15px;" dir="rtl"
+                                  t-esc="o.weight_in_ton"/>
+                        </div>
+                        <div style="font-size: 15px;width:100%" class="col-5">
+                            <span style="float:right;font-size: 15px;" dir="rtl">
+                                عدد الطـــــــرود:
+                            </span>
+                            <span style="float:right;margin-right:5px;font-size: 15px;" dir="rtl"
+                                  t-esc="o.parcel_count"/>
+                        </div>
+                        <br></br>
+                    </div>
+                    <table style="text-align: right;padding: 0px;  width: 100%; ;border-style: solid;">
+                        <tr style=" ;border-style: solid;color:#3D56B2;">
+                            <th style="text-align:right;font-size: 15px;color:#3D56B2; ">البيــان
+                            </th>
+                            <th style="text-align:right; font-size: 15px;color:#3D56B2;  ">
+                                المبلغ
+                            </th>
+                        </tr>
+                        <tr t-foreach="docs.invoice_line_ids" t-as="r"
+                            style="; border-style: solid; ">
+                            <td style="text-align:right;font-size: 15px;padding: 0px; "
+                                t-esc="r.product_id.name"></td>
+                            <td style="text-align:right; font-size: 15px;padding: 0px; "
+                                t-esc="r.price_subtotal"></td>
+                        </tr>
+                    </table>
+                    <br></br>
+                    <table style="text-align: right;padding: 0px;  width: 100%; ;font-style:normal;border-style: solid;">
+                        <td style="text-align:right; font-size: 15px;padding: 0px; ;border-style: solid;"
+                            colspan="2" t-esc="o.company_id.currency_id.ar_amount_to_text(o.amount_total)"></td>
+                    </table>
+
+                    <br></br>
+                    <br></br>
+                    <div class="col-12">
+                        <table align="right" style="text-align:right; width:400px;  " dir="rtl">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:5px 5px 5px 5px;font-size: 15px;  ;width:200px">
+                                        سعر غير شامل الضريبة:
+                                    </td>
+                                    <td style="padding:5px 5px;ffont-size: 15px; "
+                                        t-esc="o.amount_untaxed"></td>
+                                </tr>
+                                <tr t-if="o.amount_by_group">
+                                    <td style="padding:3px 3px;font-size: 15px; ;width:200px">
+                                        الضريبة المضافة 14%:
+                                    </td>
+                                    <td t-foreach="o.amount_by_group" t-as="amount_by_group"
+                                        style="padding:3px 3px;font-size: 15px; "
+                                        t-esc="amount_by_group[1]"></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:3px 3px;font-size: 15px; ">
+                                        الاجمالى:
+                                    </td>
+                                    <td style="padding:3px 3px;font-size: 15px; "
+                                        t-esc="o.amount_total"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <pre class="oe_inline" style="text-align: center; font-size: 15px; ;color:#3D56B2"
+                         t-esc="o.narration">
+                    </pre>
+                </div>
+            </t>
+        </template>
+
+
+        <template id="outbound_ground_operations_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="redsea_invoices_print_out.outbound_ground_operations_header_footer"/>
+                    <t t-call="redsea_invoices_print_out.outbound_ground_operations_page" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

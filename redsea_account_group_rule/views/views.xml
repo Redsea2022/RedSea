@@ -1,0 +1,15 @@
+<odoo>
+  <data>
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_account_group_company_form" model="ir.ui.view">
+        <field name="name">view_account_group_company_form</field>
+        <field name="model">account.group</field>
+        <field name="inherit_id" ref="account.view_account_group_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="company_id"/>
+            </xpath>
+        </field>
+    </record>
+  </data>
+</odoo>

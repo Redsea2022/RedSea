@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_journal_entries_debit_total_journal_entries_debit_total,journal_entries_debit_total.journal_entries_debit_total,model_journal_entries_debit_total_journal_entries_debit_total,base.group_user,1,1,1,1

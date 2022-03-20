@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <record id="view_account_journal_inherit_form" model="ir.ui.view">
+            <field name="name">account.journal.inherit</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_debit_account_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='default_credit_account_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_account_journal_group_inherit_form" model="ir.ui.view">
+            <field name="name">account.journal.group.inherit</field>
+            <field name="model">account.journal</field>
+            <field name="groups_id" eval="[(6,0,[ref('redsea_account_journal_group.debit_credit_journal')])]"/>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_debit_account_id']" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                </xpath>
+                <xpath expr="//field[@name='default_credit_account_id']" position="attributes">
+                    <attribute name="readonly">0</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

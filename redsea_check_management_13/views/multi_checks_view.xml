@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_multi_checks_form" model="ir.ui.view">
+            <field name="name">Receive Multiple Checks</field>
+            <field name="model">multi.checks</field>
+            <field name="arch" type="xml">
+                <form string="Receive Multiple Checks">
+                    <header>
+                        <field name="state" widget="statusbar" readonly="True"/>
+                        <button name="get_checks_posted" string="Post Checks" type="object"
+                                class="oe_highlight" attrs="{'invisible':[('state','=','posted')]}"/>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="payment_journal" attrs="{'readonly':[('state','=','posted')]}" options="{'no_create_edit': True,
+                                    'no_quick_create': True}"/>
+                                <field name="payment_date" attrs="{'readonly':[('state','=','posted')]}"/>
+                            </group>
+                            <group>
+                                <field name="ref" attrs="{'readonly':[('state','=','posted')]}"/>
+                            </group>
+                        </group>
+                        <field name="payment_ids" attrs="{'readonly':[('state','=','posted')]}"
+                               context="{'default_journal_id': payment_journal,'default_payment_date': payment_date,'default_payment_type': 'inbound'}">
+                            <tree editable="bottom">
+                                <field name="company_id" invisible="1"/>
+                                <field name="payment_type" invisible="1"/>
+                                <field name="partner_type" required="True"/>
+                                <field name="partner_id" required="True"
+                                       context="{'default_supplier': payment_type == 'outbound', 'default_customer': payment_type == 'inbound'}"/>
+                                <field name="payment_method_id" invisible="True"/>
+                                <field name="journal_id" invisible="True"/>
+                                <field name="payment_date" invisible="True"/>
+                                <field name="payment_type" invisible="True"/>
+                                <field name="amount"/>
+                                <field name="currency_id" readonly="True"/>
+                                <field name="bank_name" required="True"/>
+                                <field name="check_number" required="True"/>
+                                <field name="due_date" required="True"/>
+                                <field name="actual_date" required="True"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_multi_checks_tree" model="ir.ui.view">
+            <field name="name">Receive Multiple Checks</field>
+            <field name="model">multi.checks</field>
+            <field name="arch" type="xml">
+                <tree string="Receive Multiple Checks">
+                    <field name="payment_journal"/>
+                    <field name="payment_date"/>
+                    <field name="ref"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_multi_checks_action" model="ir.actions.act_window">
+            <field name="name">Receive Multiple Checks</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">multi.checks</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="view_multi_checks_menuitem" name="Receive Multiple Checks"
+                  parent="account.menu_finance_receivables" action="view_multi_checks_action"/>
+
+    </data>
+</odoo>

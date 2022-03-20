@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+       <record id="payment_cancel_draft_group" model="res.groups">
+           <field name="name">Payment Cancel/Draft Group</field>
+       </record>
+
+    </data>
+</odoo>

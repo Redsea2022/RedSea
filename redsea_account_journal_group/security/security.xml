@@ -1,0 +1,7 @@
+<odoo>
+    <data>
+        <record id="debit_credit_journal" model="res.groups">
+            <field name="name">Debit/Credit Journal</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="account_move_tree_invoice" model="ir.ui.view">
+            <field name="name">account.move.tree</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_invoice_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total_signed']" position="before">
+                    <field name="amount_residual" string="Amount Due In Currency"/>
+                    <field name="amount_total" string="Total In Currency"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

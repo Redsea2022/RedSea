@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <act_window name="Total Receivable Balance" id="act_rec_bal"
+                    res_model="receivable.balance"
+                    view_mode="form"
+                    target="new"/>
+        <menuitem
+                id="menu_rec_bal"
+                name="Total Receivable Balance"
+                parent="account.menu_finance_receivables"
+                action="act_rec_bal"
+                sequence="20"
+        />
+
+        <record id="tot_bal_view" model="ir.ui.view">
+            <field name="name">Total Receivable Balance</field>
+            <field name="model">receivable.balance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+
+                        <field name="sales_person_id"/>
+                        <field name="partner_id"/>
+                    </group>
+                    <group invisible="1">
+                        <group>
+                            <field name="report" widget="binary" string="Download" filename="report_name" invisible="1"/>
+                            <field name="report_name" invisible="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="action_print" string="Generate Report" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

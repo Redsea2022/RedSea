@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <record id="make_payment_approval_wizard_form_view" model="ir.ui.view">
+            <field name="name">Make Approval Form View</field>
+            <field name="model">make.payment.approval.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                     <sheet>
+                         <group>
+                             <field name="review"/>
+                             <field name="reason"/>
+                         </group>
+                     </sheet>
+                      <footer>
+                        <button string="Confirm" name="make_approval" type="object"  class="oe_highlight"/>
+                        <button string="Cancel" type="special" special="cancel"/>
+                     </footer>
+                 </form>
+            </field>
+        </record>
+        <record id="make_payment_approval_wizard_action" model="ir.actions.act_window">
+            <field name="name">Make Approval</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">make.payment.approval.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

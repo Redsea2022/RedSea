@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="asset_frontend" inherit_id="web.assets_frontend" name="Theme Hub Frontend">
+            <xpath expr="." position="inside">
+                <!-- Libraries CSS Files -->
+
+                <!--        <link rel="preconnect" href="https://fonts.googleapis.com" />-->
+                <!--        <link rel="preconnect" href="https://fonts.gstatic.com" />-->
+                <!--        <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />-->
+
+
+                <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                <link rel="preconnect" href="https://fonts.gstatic.com"/>
+                <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap"
+                      rel="stylesheet"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

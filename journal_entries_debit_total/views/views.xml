@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+    <!-- Inherit Form View to Modify it -->
+    <record id="account_move_debit_total" model="ir.ui.view">
+        <field name="name">account.move.debit.total</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="debit_total"/>
+            </xpath>
+
+        </field>
+    </record>
+  </data>
+</odoo>

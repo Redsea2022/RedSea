@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <record id="account_payment_form_edit_inherits" model="ir.ui.view">
+            <field name="name">account.payment.form.edit.inherits</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//button[@name='action_draft']" position="attributes">
+                    <attribute name="groups">redsea_payment_cancel_draft_buttons_group.payment_cancel_draft_group</attribute>
+                </xpath>
+
+                <xpath expr="//button[@name='cancel']" position="attributes">
+                    <attribute name="groups">redsea_payment_cancel_draft_buttons_group.payment_cancel_draft_group</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="account_move_form_edit_inherits" model="ir.ui.view">
+            <field name="name">account.move.form.edit.inherits</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//button[@name='button_draft']" position="attributes">
+                    <attribute name="groups">redsea_payment_cancel_draft_buttons_group.payment_cancel_draft_group</attribute>
+                </xpath>
+
+                <xpath expr="//button[@name='button_cancel']" position="attributes">
+                    <attribute name="groups">redsea_payment_cancel_draft_buttons_group.payment_cancel_draft_group</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
